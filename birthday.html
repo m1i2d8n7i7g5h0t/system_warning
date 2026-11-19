@@ -1,0 +1,373 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Happy Birthday!</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Great+Vibes&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            background: #080810;
+            overflow-x: hidden;
+        }
+
+        video {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -3;
+        }
+
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(5, 5, 20, 0.55);
+            backdrop-filter: blur(2px);
+            z-index: -2;
+        }
+
+        .particles {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            bottom: -30px;
+            font-size: 20px;
+            opacity: 0;
+            animation: floatUp linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            15% {
+                opacity: 0.8;
+            }
+            85% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 25px 15px;
+        }
+
+        .birthday-card {
+            width: 100%;
+            max-width: 500px;
+            padding: 40px 25px;
+
+            text-align: center;
+
+            background: rgba(255, 255, 255, 0.09);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+
+            border-radius: 25px;
+            backdrop-filter: blur(18px);
+
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+
+            animation: cardAppear 1.2s ease;
+        }
+
+        @keyframes cardAppear {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .top-text {
+            font-size: 12px;
+            letter-spacing: 4px;
+            color: #f7c8ff;
+            margin-bottom: 20px;
+        }
+
+        .cake {
+            font-size: 75px;
+            margin: 15px 0;
+
+            animation: cakeBounce 2s infinite ease-in-out;
+        }
+
+        @keyframes cakeBounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        .birthday-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(42px, 11vw, 65px);
+            font-weight: 400;
+
+            background: linear-gradient(
+                90deg,
+                #ffb7e9,
+                #ffffff,
+                #c6b6ff
+            );
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            line-height: 1.9;
+            color: #eeeeee;
+            margin-bottom: 25px;
+        }
+
+        .age-box {
+            display: inline-block;
+            padding: 17px 35px;
+            margin: 10px 0 25px;
+
+            background: rgba(255, 255, 255, 0.10);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+
+            border-radius: 18px;
+        }
+
+        .age {
+            font-size: 48px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffb8e9, #c6b6ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .age-label {
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: #ddd;
+        }
+
+        .date {
+            font-size: 13px;
+            color: #f5c9ff;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+        }
+
+        .message {
+            font-size: 13px;
+            line-height: 2;
+            color: #eeeeee;
+
+            padding: 18px;
+
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 15px;
+
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .heart {
+            font-size: 22px;
+            margin-top: 25px;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        .footer {
+            margin-top: 25px;
+            font-size: 10px;
+            letter-spacing: 2px;
+            color: #aaa;
+        }
+
+        @media (max-width: 480px) {
+            .birthday-card {
+                padding: 35px 20px;
+            }
+
+            .cake {
+                font-size: 65px;
+            }
+
+            .message {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <video autoplay muted loop playsinline>
+        <source src="video1.mp4" type="video/mp4">
+    </video>
+
+    <div class="overlay"></div>
+
+    <div class="particles" id="particles"></div>
+
+    <main class="container">
+
+        <div class="birthday-card">
+
+            <p class="top-text">
+                ✨ A SPECIAL DAY ✨
+            </p>
+
+            <div class="cake">🎂</div>
+
+            <h1 class="birthday-title">
+                Happy Birthday Akke!
+            </h1>
+
+            <p class="subtitle">
+                Today is all about celebrating you.
+                May your life be filled with happiness,
+                love and unforgettable memories.
+            </p>
+
+            <div class="age-box">
+
+                <div class="age" id="age">
+                    20
+                </div>
+
+                <div class="age-label">
+                    YEARS OLD
+                </div>
+
+            </div>
+
+            <p class="date">
+                20 • NOVEMBER • 2006
+            </p>
+
+            <div class="message">
+
+                Wishing you a beautiful birthday
+                filled with endless smiles, wonderful
+                moments and dreams coming true.
+
+                <br><br>
+
+                May this new chapter of your life
+                bring you everything you've been
+                wishing for.
+
+                <br><br>
+
+                Enjoy your special day! ❤️
+
+            </div>
+
+            <div class="heart">💗 ✨ 💗</div>
+
+            <div class="footer">
+                Speacial Thanks For Abhi-man
+            </div>
+
+        </div>
+
+    </main>
+
+    <script>
+
+        // Calculate age automatically
+
+        const birthDate = new Date(2006, 10, 20);
+        const today = new Date();
+
+        let age = today.getFullYear() - birthDate.getFullYear();
+
+        const birthdayNotReached =
+            today.getMonth() < birthDate.getMonth() ||
+            (
+                today.getMonth() === birthDate.getMonth() &&
+                today.getDate() < birthDate.getDate()
+            );
+
+        if (birthdayNotReached) {
+            age--;
+        }
+
+        document.getElementById("age").textContent = age;
+
+        // Floating particles
+
+        const particles = document.getElementById("particles");
+
+        const symbols = ["✨", "💗", "🎉", "⭐", "💫"];
+
+        for (let i = 0; i < 25; i++) {
+
+            const particle = document.createElement("div");
+
+            particle.className = "particle";
+
+            particle.textContent =
+                symbols[Math.floor(Math.random() * symbols.length)];
+
+            particle.style.left = Math.random() * 100 + "%";
+
+            particle.style.animationDuration =
+                (7 + Math.random() * 9) + "s";
+
+            particle.style.animationDelay =
+                Math.random() * 10 + "s";
+
+            particle.style.fontSize =
+                (12 + Math.random() * 15) + "px";
+
+            particles.appendChild(particle);
+        }
+
+    </script>
+
+</body>
+</html>
